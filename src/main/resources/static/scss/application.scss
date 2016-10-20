@@ -1,0 +1,22 @@
+$default-color-background: white;
+$active-link-color: white;
+$button-default-color: white;
+$form-text-align: left;
+$header-margin-top: 0px;
+$header-margin-bottom: 30px;
+$button-default-padding: 10px;
+$default-margin-row: 10px;
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: $default-color-background;
+}
+
+.isActiveLink{ color: $active-link-color !important; }
+.form-horizontal .control-label { text-align: $form-text-align; }
+.h1, .h2, .h3, h1, h2, h3 { margin-top: $header-margin-top; margin-bottom: $header-margin-bottom; }
+.btn { padding: $button-default-padding; color: $button-default-color !important; }
+.ui-growl { top: 55px !important; }
+.applicationFooter { margin: 50px 0; }
+.ui-grid-row { margin-bottom: $default-margin-row;}
+.upload-single-file  .ui-fileupload-row > div:last-child{ display: none; }

@@ -1,0 +1,67 @@
+<p-growl [value]="msgs" [life]="5000"></p-growl>
+<h1>Create New Request</h1>
+
+<p-tabView>
+    <p-tabPanel header="Request">
+       <form class="form-horizontal" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Request Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" [(ngModel)]="request.name" placeholder="Request Name" name="name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Account:</label>
+                <div class="col-sm-8">
+                    <select [(ngModel)]="request.account" name="account" class="form-control">
+                        <option *ngFor="let item of accounts" >{{item.name}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <a routerLink="/account-new" class="btn btn-primary pull-right" role="button">New Account</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Product Template:</label>
+                <div class="col-sm-10">
+                    <p-dataTable [value]="productTemplates" [(selection)]="selectedProductTemplates">
+                        <p-column [style]="{'width':'40px'}" selectionMode="multiple" header="test"></p-column>
+                        <p-column field="name" header="Name"></p-column>
+                        <p-column field="code" header="Code"></p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Factors:</label>
+                <div class="col-sm-10">
+                    <p-dataTable [value]="factors" [(selection)]="selectedFactors">
+                        <p-column [style]="{'width':'40px'}" selectionMode="multiple" header="test"></p-column>
+                        <p-column field="displayValue" header="Name"></p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <a (click)="createMatrix()" class="btn btn-primary pull-right" role="button">Create Matrix</a>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <p-dataTable [value]="dynamicTable.data" [editable]="true" [rows]="20"  
+                                [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[10,20,50]" >
+                        <p-column *ngFor="let col of dynamicTable.columns" [field]="col.field" [header]="col.header"
+                                [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+       </form>
+    </p-tabPanel>
+    <p-tabPanel header="Select Factors">
+        Generate Factors from Client Data
+    </p-tabPanel>
+    <p-tabPanel header="Configure Options">
+        Content 3    
+    </p-tabPanel>
+    <p-tabPanel header="Employee Data">
+        Content 4
+    </p-tabPanel>
+</p-tabView>

@@ -1,0 +1,14 @@
+{
+  "name": "ghi-quotation",
+  "description": "stand alone application for quotation",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,117 @@
+<p-growl [value]="msgs" [life]="5000"></p-growl>
+
+<h1>Create New Account</h1>
+
+<form class="form-horizontal" (ngSubmit)="onSubmit()">
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="accountName">Account
+			Name:</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" [(ngModel)]="account.name" placeholder="ACME Corporation" name="accountName" required>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="accountCode">Account Code:</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" [(ngModel)]="account.code" placeholder="ACMECORP" name="accountCode" required>
+		</div>
+	</div>
+
+	<div class="form-group col-sm-12">
+		<hr />
+		<h3>Account Mailing Address</h3>
+	</div>
+	<div class="form-group col-sm-6">
+		<label class="control-label col-sm-4" for="addressLine1">Address Line 1:</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" [(ngModel)]="address.addr1" placeholder="Level 1" name="addressLine1" required>
+		</div>
+	</div>
+	<div class="form-group col-sm-6">
+		<label class="control-label col-sm-4" for="suburb">Suburb:</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" [(ngModel)]="address.suburb" placeholder="Newmarket" name="suburb" required>
+		</div>
+	</div>
+	<div class="form-group col-sm-6">
+		<label class="control-label col-sm-4" for="addressLine2">Address Line 2:</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" [(ngModel)]="address.addr2" placeholder="31-33 Great South Road" name="addressLine2">
+		</div>
+	</div>
+	<div class="form-group col-sm-6">
+		<label class="control-label col-sm-4" for="country">Contry:</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" [(ngModel)]="address.country" placeholder="New Zealand" name="country" required>
+		</div>
+	</div>
+	<div class="form-group col-sm-6">
+		<label class="control-label col-sm-4" for="addressLine3">Address Line 3:</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" [(ngModel)]="address.addr3" placeholder="" name="addressLine3">
+		</div>
+	</div>
+	<div class="form-group col-sm-6">
+		<label class="control-label col-sm-4" for="zipCode">Zip Code:</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" [(ngModel)]="address.postCode" placeholder="1051" name="zipCode" required>
+		</div>
+	</div>
+	
+	<div class="form-group col-sm-12">
+		<hr />
+		<h3>Account Contact</h3>
+	</div>
+	<div class="form-group col-sm-6">
+		<label class="control-label col-sm-4" for="contactName">Name:</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" [(ngModel)]="account.contactName" placeholder="John Doe" name="contactName" required>
+		</div>
+	</div>
+	<div class="form-group col-sm-6">
+		<label class="control-label col-sm-4" for="contactEmail">Email:</label>
+		<div class="col-sm-8">
+			<input type="email" class="form-control" [(ngModel)]="account.contactEmailAddress" placeholder="john.doe@email.com" name="contactEmail" required>
+		</div>
+	</div>
+	<div class="form-group col-sm-6">
+		<label class="control-label col-sm-4" for="phoneNumber">Phone Number:</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" [(ngModel)]="account.contactPhoneNumber" placeholder="" name="phoneNumber">
+		</div>
+	</div>
+
+	<div class="form-group col-sm-12">
+		<hr />
+		<h3>Upload File</h3>
+	</div>
+	<div class="form-group col-sm-6">
+		<label class="control-label col-sm-4" for="contactName">File Upload:</label>
+		<div class="col-sm-8">
+			<p-fileUpload name="file" url="/ghi-quotation/account/parseFile" accept=".xlsx, .xlsx" (onClear)="onClear()" class="upload-single-file"
+			(onSelect)="onSelect($event)" (onUpload)="onUpload($event)" [disabled]="disableUpload"></p-fileUpload>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-12">
+			<p-dataTable [value]="dynamicTable.data" [editable]="true" [rows]="20"  
+						 [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[10,20,50]" >
+				<header>
+					<div style="text-align:left">
+						<p-multiSelect [options]="columnOptions" [(ngModel)]="dynamicTable.columns" name="columnOptions"></p-multiSelect>
+					</div>
+				</header>
+				<p-column *ngFor="let col of dynamicTable.columns" [field]="col.field" [header]="col.header"
+						[sortable]="true" [editable]="!account.id" [filter]="true" filterMatchMode="contains"></p-column>
+			</p-dataTable>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-10">
+			<button type="submit" class="btn btn-primary" label="Save">Save</button>
+			<a routerLink="/account-list" class="btn btn-primary" routerLinkActive="active" routerLinkActive="isActiveLink">Back</a>
+		</div>
+	</div>
+</form>
