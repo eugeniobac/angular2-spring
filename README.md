@@ -30,7 +30,7 @@ INSERT INTO app_user_roles (app_user_id, roles_id) VALUES (1, 1);
   - Eclipse Project with Maven.
   - Java 8
   - Spring Boot + Spring Data JPA + Spring Security
-  - Angular JS 2
+  - Angular 2
   - Angular CLI
   - TypeScript
   - GulpJS
