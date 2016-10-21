@@ -2,18 +2,18 @@
 This project was generated with [angular-cli](https://github.com/angular/angular-cli)
 
 ## Development server
-Run `npm start` (inside static folder) for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` (inside the static folder) for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
-Run `npm run bundle` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run bundle` to build the project. The build artefacts will be stored in the `dist/` directory.
 
 ## Maven Config
 You must have sure that the node/npm version inside your `pom.xml` matches with your system node/npm 
 
 ```xml
 <configuration>
-	<nodeVersion>v4.6.0</nodeVersion>
-	<npmVersion>3.10.8</npmVersion>
+    <nodeVersion>v4.6.0</nodeVersion>
+    <npmVersion>3.10.8</npmVersion>
 </configuration>
 ```
 
