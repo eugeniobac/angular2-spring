@@ -4,8 +4,8 @@
       
 	<head>
 	  <meta charset="utf-8"></meta>
-	  <title>Angular 2 + Spring</title>
-	  <base href="/angular2-spring"></base>
+	  <title>GhiQuotation</title>
+	  <base href="/ghi-quotation"></base>
 	
 	  <link th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet"></link>
 	  
@@ -15,18 +15,19 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 	  <link rel="icon" type="image/x-icon" href="favicon.ico"></link>
 	</head>
-	<body>
+	<body th:with="IS_DEV_ENV=${#strings.contains(#httpServletRequest.requestURL,'localhost:4200')}">
 		<my-app>
-			<i class="fa fa-spinner fa-pulse fa-3x fa-fw center-block" style="font-size: 100px; display: block;"></i>
+			<i class="fa fa-spinner fa-pulse fa-3x fa-fw center-block" style="font-size: 100px; display: block; margin-top: 10%;"></i>
 			<span class="sr-only">Loading...</span>
 		</my-app>
-		<script sec:authorize="!hasAuthority('DEV')" type="text/javascript" th:src="@{/dist/inline.js}"></script>
-		<script sec:authorize="!hasAuthority('DEV')" type="text/javascript" th:src="@{/dist/main.bundle.js}"></script>
-		<script sec:authorize="!hasAuthority('DEV')" type="text/javascript" th:src="@{/dist/styles.bundle.js}"></script>
 		
-		<script sec:authorize="hasAuthority('DEV')" type="text/javascript" src="http://localhost:4200/inline.js"></script>
-		<script sec:authorize="hasAuthority('DEV')" type="text/javascript" src="http://localhost:4200/main.bundle.js"></script>
-		<script sec:authorize="hasAuthority('DEV')" type="text/javascript" src="http://localhost:4200/styles.bundle.js"></script>
+		<script th:if="${!IS_DEV_ENV}" type="text/javascript" th:src="@{/dist/inline.js}"></script>
+		<script th:if="${!IS_DEV_ENV}" type="text/javascript" th:src="@{/dist/main.bundle.js}"></script>
+		<script th:if="${!IS_DEV_ENV}" type="text/javascript" th:src="@{/dist/styles.bundle.js}"></script>
+	
+		<script th:if="${IS_DEV_ENV}" type="text/javascript" src="http://localhost:4200/inline.js"></script>
+		<script th:if="${IS_DEV_ENV}" type="text/javascript" src="http://localhost:4200/main.bundle.js"></script>
+		<script th:if="${IS_DEV_ENV}" type="text/javascript" src="http://localhost:4200/styles.bundle.js"></script>
 		
 		<script type="text/javascript" th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
 		<script type="text/javascript" th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
