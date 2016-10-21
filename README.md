@@ -1,6 +1,16 @@
 # Angular 2 + Spring
 This project was generated with [angular-cli](https://github.com/angular/angular-cli)
 
+## Prerequisites
+Both the CLI and generated project have dependencies that require Node 4 or higher, together
+with NPM 3 or higher.
+
+## Installation
+```bash
+npm install -g angular-cli
+npm install
+```
+
 ## Development server
 Run `npm start` (inside the static folder) for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
